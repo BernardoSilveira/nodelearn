@@ -1,13 +1,17 @@
 const http = require("http");
-const url = require("url");
+const path = require("path");
 const fs = require("fs");
 
 const port = 8080;
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Hello World!</h1>');
+    let filename = '.' + req.url;
+    filename = (filename === './') ? './index.html' : filename;
+    fs.readFile(filename, (err, data) => {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        return res.end(data);
+    })
+
 });
 
 server.listen(port, () => {
