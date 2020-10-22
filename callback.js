@@ -18,9 +18,9 @@ const addFruit = function (fruit1, fruit2) {
 console.log('::Start::');
 
 getBanana(banana => {
-    console.log('We have the banana!');
+    console.log('We have the ' + banana);
     getApple(apple => {
-        console.log('We have the apple!');
+        console.log('We have the ' + apple);
         console.log(addFruit(banana, apple));
         console.timeEnd('timer');
     });
